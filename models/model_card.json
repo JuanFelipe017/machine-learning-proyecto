@@ -14,7 +14,7 @@
   "n_train": 3680,
   "n_test": 921,
   "sklearn_version": "1.8.0",
-  "fecha_entrenamiento": "2026-05-25T21:34:41",
+  "fecha_entrenamiento": "2026-05-26T12:11:19",
   "dataset": "UCI SpamBase (4601 emails reales, HP Labs 1999)",
   "features": [
     "word_freq_make",
