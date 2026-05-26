@@ -130,7 +130,7 @@ La app queda disponible en <http://localhost:8501>.
 
 ## Uso de la aplicación
 
-La app ofrece **tres modos** de entrada:
+La app ofrece **dos modos** de entrada:
 
 1. **Pegar texto de un email** — se extraen las 57 features de SpamBase desde el
    texto crudo y se predice. *Nota:* el modelo aprendió el vocabulario HP Labs 1999,
@@ -139,9 +139,6 @@ La app ofrece **tres modos** de entrada:
 2. **Fila aleatoria del test set** — toma una fila real de `data/processed/test.csv`,
    muestra la etiqueta verdadera y la predicción del modelo (útil para demostrar el
    ~92 % de accuracy en vivo).
-3. **Editar features manualmente** — sliders para las 11 features más influyentes;
-   el resto queda en 0. Útil para mostrar cómo cambia la predicción al subir las
-   features asociadas a spam.
 
 ## Buenas prácticas de MLOps aplicadas en esta entrega
 

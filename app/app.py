@@ -99,7 +99,6 @@ mode = st.radio(
     [
         "1. Pegar texto de un email",
         "2. Probar con una fila aleatoria del test set",
-        "3. Editar features manualmente",
     ],
     horizontal=False,
 )
@@ -169,35 +168,3 @@ elif mode.startswith("2"):
             r = row[FEATURE_COLUMNS].iloc[0]
             st.dataframe(r[r > 0].rename("valor").to_frame())
 
-# ----- Modo 3: edicion manual -----
-else:
-    st.subheader("Editar manualmente las features mas influyentes")
-    st.caption(
-        "El resto de features (no editadas) quedan en 0. Esto es util para "
-        "explorar como cambia la prediccion al subir 'free', 'money', '!', etc."
-    )
-
-    quick_features = [
-        ("word_freq_free", 0.0, 30.0, 0.0, 0.1),
-        ("word_freq_money", 0.0, 30.0, 0.0, 0.1),
-        ("word_freq_credit", 0.0, 30.0, 0.0, 0.1),
-        ("word_freq_your", 0.0, 30.0, 0.0, 0.1),
-        ("word_freq_000", 0.0, 30.0, 0.0, 0.1),
-        ("word_freq_business", 0.0, 30.0, 0.0, 0.1),
-        ("char_freq_!", 0.0, 30.0, 0.0, 0.1),
-        ("char_freq_$", 0.0, 30.0, 0.0, 0.1),
-        ("capital_run_length_average", 0.0, 100.0, 1.0, 0.5),
-        ("capital_run_length_longest", 0.0, 500.0, 1.0, 1.0),
-        ("capital_run_length_total", 0.0, 5000.0, 1.0, 5.0),
-    ]
-
-    values: dict[str, float] = {c: 0.0 for c in FEATURE_COLUMNS}
-    cols = st.columns(2)
-    for i, (name, lo, hi, default, step) in enumerate(quick_features):
-        with cols[i % 2]:
-            values[name] = st.slider(name, lo, hi, default, step)
-
-    row = pd.DataFrame([values], columns=FEATURE_COLUMNS)
-    if st.button("Predecir", type="primary"):
-        out = predict_from_features(row, MODEL_PATH)
-        render_result(out)
