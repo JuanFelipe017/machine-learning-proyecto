@@ -62,37 +62,35 @@ Mejores hiperparámetros encontrados: `C = 10`, `gamma = 'scale'`.
 
 ```
 Grupo7 - SVM/
-├── README.md                  # este archivo
+├── README.md                  
 ├── requirements.txt           # dependencias Python
 ├── .gitignore
 │
 ├── data/
-│   ├── raw/                   # spambase.data, spambase.names, spambase.DOCUMENTATION
-│   └── processed/             # train.csv y test.csv (generados por el notebook)
+│   ├── raw/                   # Datos originales
+│   └── processed/             # Datos ya procesados (train y test)
 │
 ├── notebooks/
-│   ├── 01_training.ipynb      # carga → EDA → preprocesa → entrena → evalúa → serializa
-│   └── build_notebook.py      # script que genera 01_training.ipynb (reproducible)
+│   ├── 01_training.ipynb      # El notebook con TODO el análisis
+│   └── build_notebook.py      # Script que GENERA ese notebook (reproducible)
 │
 ├── models/
-│   ├── modelo.pkl             # pipeline serializado (StandardScaler + SVC)
-│   └── model_card.json        # metadatos: hiperparámetros, métricas, versión sklearn, fecha
+│   ├── modelo.pkl             # El modelo SVM ya entrenado y guardado
+│   └── model_card.json        # "Ficha técnica" del modelo
 │
 ├── src/
 │   ├── __init__.py
-│   ├── preprocessing.py       # load_raw(), split_xy(), email_to_features()
-│   └── predict.py             # load_model(), predict_from_features(), predict_from_email()
+│   ├── preprocessing.py       # Funciones que limpian/transforman datos
+│   └── predict.py             # Función que usa el modelo para predeci
 │
 ├── app/
 │   ├── app.py                 # aplicación Streamlit
-│   ├── templates/             # (vacío — Streamlit no usa templates)
-│   └── static/                # (vacío)
-│
+
 └── docs/
-    ├── evidence_local_test.txt  # evidencia textual de la prueba local
+    ├── evidence_local_test.txt  # Log de la prueba local
     ├── streamlit_homepage.html  # HTML servido por Streamlit en localhost
-    ├── streamlit_run.log        # log del arranque de Streamlit
-    └── images/                  # plots generados por el notebook
+    ├── streamlit_run.log        # Log de cuando arrancó Streamlit
+    └── images/                  # Gráficos exportados del notebook
 ```
 
 ## Instalación local
@@ -105,7 +103,7 @@ Grupo7 - SVM/
 ### Pasos
 
 ```bash
-git clone <url-del-repo>
+git clone https://github.com/JuanFelipe017/machine-learning-proyecto.git
 cd "Grupo7 - SVM"
 pip install -r requirements.txt
 ```
@@ -158,7 +156,3 @@ La app ofrece **dos modos** de entrada:
 
 - Grupo 7 — Inteligencia Artificial I
 - Algoritmo asignado: **Support Vector Machines (SVM)**
-
-## Licencia
-
-MIT License
