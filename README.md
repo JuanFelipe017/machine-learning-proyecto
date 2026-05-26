@@ -150,7 +150,9 @@ La app ofrece **tres modos** de entrada:
 - **Model card** (`models/model_card.json`) con hiperparámetros, métricas, versión
   de scikit-learn y fecha de entrenamiento.
 - **Reproducibilidad**: el notebook se genera desde `notebooks/build_notebook.py`
-  y se ejecuta con `random_state=42` en split y modelo.
+  (un solo archivo Python legible y diffeable en git) y se ejecuta con
+  `random_state=42` en split y modelo. Para regenerarlo:
+  `python notebooks/build_notebook.py`.
 - **Separación de capas**: lógica de datos (`src/preprocessing.py`), de inferencia
   (`src/predict.py`) y de UI (`app/app.py`) en módulos independientes.
 - **`requirements.txt`** con versiones fijadas.
