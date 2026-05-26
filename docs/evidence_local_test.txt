@@ -1,0 +1,36 @@
+======================================================================
+EVIDENCIA DE PRUEBA LOCAL - Streamlit app (Grupo 7 - SVM)
+======================================================================
+
+Modelo cargado desde: models/modelo.pkl
+App escuchando en  : http://localhost:8501  (HTTP 200, healthcheck OK)
+
+----------------------------------------------------------------------
+MODO 2 - filas reales del test set SpamBase
+----------------------------------------------------------------------
+  fila  777  real=SPAM  pred=SPAM  prob_spam=0.850  score=+1.735
+  fila  770  real=SPAM  pred=SPAM  prob_spam=0.948  score=+2.894
+  fila   91  real=SPAM  pred=SPAM  prob_spam=0.718  score=+0.934
+  fila  426  real=HAM   pred=HAM   prob_spam=0.272  score=-0.986
+  fila  364  real=HAM   pred=HAM   prob_spam=0.266  score=-1.014
+  fila  263  real=HAM   pred=HAM   prob_spam=0.232  score=-1.198
+  -> aciertos en estas 6 filas: 6/6
+
+----------------------------------------------------------------------
+MODO 1 - emails sinteticos
+----------------------------------------------------------------------
+  [spam (vocab ok)] -> pred=HAM  prob_spam=0.358  score=-0.586
+  [ham corporativo HP] -> pred=HAM  prob_spam=0.357  score=-0.586
+
+----------------------------------------------------------------------
+METRICAS DEL MODELO (test set completo)
+----------------------------------------------------------------------
+  accuracy  : 0.9207
+  precision : 0.9119
+  recall    : 0.8843
+  f1        : 0.8979
+  roc_auc   : 0.9698
+
+  mejores hiperparametros: {'svm__C': 10, 'svm__gamma': 'scale'}
+  fecha entrenamiento    : 2026-05-25T21:34:41
+  sklearn                : 1.8.0
