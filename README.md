@@ -20,12 +20,60 @@ Hewlett-Packard Labs).
 
 ## Demostración
 
-Aplicación local en http://localhost:8501 una vez ejecutado `streamlit run app/app.py`.
-Despliegue en la nube pendiente para la Entrega 2.
+🚀 **Aplicación desplegada:** [https://juanfelipe017-machine-learning-proyecto-appapp-9yijsd.streamlit.app](https://juanfelipe017-machine-learning-proyecto-appapp-9yijsd.streamlit.app)
+
+> Desplegada en **Streamlit Cloud**, conectada directamente al repositorio de GitHub.
+> Cada `git push` a `main` actualiza la app automáticamente.
 
 ## Algoritmo utilizado
 
-- **Algoritmo:** Support Vector Machines (SVM) con kernel RBF, `class_weight='balanced'`.
+### ¿Qué es un Support Vector Machine (SVM)?
+
+Un **Support Vector Machine** es un algoritmo de aprendizaje supervisado que busca el
+**hiperplano óptimo** que separa dos clases con el mayor margen posible. La idea central
+es encontrar la frontera de decisión que maximiza la distancia entre los puntos de
+entrenamiento más cercanos a ella (llamados *support vectors*) y la frontera misma.
+
+Cuando los datos no son linealmente separables —como ocurre en la mayoría de problemas
+reales— se usa un **kernel** para proyectarlos a un espacio de mayor dimensión donde sí
+lo sean. En este proyecto usamos el kernel **RBF (Radial Basis Function)**, que define
+la similitud entre puntos a partir de su distancia euclidiana y permite capturar
+fronteras de decisión curvas y complejas.
+
+Los dos hiperparámetros principales son:
+- **C** (regularización): controla el balance entre maximizar el margen y tolerar
+  errores. Valores altos hacen el modelo más ajustado a los datos de entrenamiento.
+- **gamma**: define qué tan lejos "alcanza" la influencia de cada punto de
+  entrenamiento. Valores altos hacen fronteras más complejas y locales.
+
+### SVM aplicado a la detección de spam: antecedentes históricos
+
+El uso de SVM para clasificar spam no es nuevo; de hecho, es uno de los problemas
+donde este algoritmo demostró su valor antes de la era del deep learning:
+
+- **Drucker et al. (1999)** publicaron uno de los primeros trabajos que comparó SVM
+  con otros clasificadores (Boosting, RBF networks) sobre el dataset SpamBase de UCI
+  —el mismo que usamos nosotros—, concluyendo que SVM obtenía resultados competitivos
+  con muy poca ingeniería de features.
+- **Vapnik (1995)** sentó las bases teóricas del SVM en su libro *The Nature of
+  Statistical Learning Theory*, y durante los años 2000 se convirtió en el
+  *state-of-the-art* para clasificación de texto y spam antes de que las redes
+  neuronales profundas tomaran el protagonismo.
+- A principios de los 2000, filtros como **SpamAssassin** y motores de correo de
+  empresas como HP Labs y AT&T incorporaron variantes de SVM en sus pipelines de
+  detección, demostrando que era viable en producción con miles de mensajes diarios.
+- Estudios posteriores (*Sculley & Wachman, 2007*) confirmaron que SVM lineal y con
+  kernel RBF superaban a Naive Bayes en precisión para detección de spam cuando se
+  usaban features de frecuencia de palabras —exactamente el enfoque del dataset
+  SpamBase que empleamos.
+
+Hoy en día los grandes proveedores (Gmail, Outlook) usan modelos más complejos basados
+en transformers, pero SVM sigue siendo una referencia académica fundamental y una
+solución robusta para datasets de tamaño moderado.
+
+### Configuración en este proyecto
+
+- **Algoritmo:** SVM con kernel RBF, `class_weight='balanced'`.
 - **Preprocesamiento:** `StandardScaler` (SVM es muy sensible a la escala de las features).
 - **Selección de hiperparámetros:** `GridSearchCV` con CV de 5 folds, optimizando F1
   sobre `C ∈ {0.5, 1, 3, 10}` y `gamma ∈ {scale, 0.01, 0.05}`.
