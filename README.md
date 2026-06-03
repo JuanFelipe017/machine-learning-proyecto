@@ -182,6 +182,28 @@ La app ofrece **dos modos** de entrada:
    texto crudo y se predice. *Nota:* el modelo aprendió el vocabulario HP Labs 1999,
    así que para que el texto cuente como spam debe contener palabras como `free`,
    `money`, `credit`, `business`, `000`, `!`, `$` con cierta densidad.
+   Correo de prueba: 
+   Subject: 🎉 CONGRATULATIONS! You're Our iPhone 17 Grand Prize Winner!
+
+From: Apple Rewards Team prizes@apple-rewards-center.net
+To: [Your Email]
+
+Dear Valued Customer,
+
+YOU HAVE BEEN SELECTED!
+
+We are thrilled to inform you that your email address was randomly chosen from millions of entries in our Apple Customer Appreciation Giveaway 2025. You are the GRAND PRIZE WINNER of a brand new iPhone 17 Pro Max 1TB (valued at $1,599)!
+
+Your Winning Details:
+
+Prize: iPhone 17 Pro Max (Titanium Black)
+Serial Number: IP17-2025-GRAND-7892
+Claim Code: WINNER-IP17-X9K2M
+CLAIM YOUR PRIZE NOW!
+
+Due to high demand and limited stock, you must claim your prize within 24 hours or it will be forfeited to the runner-up.
+
+👉 [CLICK HERE TO CLAIM YOUR IPHONE 17] 👈
 2. **Fila aleatoria del test set** — toma una fila real de `data/processed/test.csv`,
    muestra la etiqueta verdadera y la predicción del modelo (útil para demostrar el
    ~92 % de accuracy en vivo).
